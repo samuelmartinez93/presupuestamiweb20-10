@@ -1,0 +1,65 @@
+:root {
+  font-family: Inter, 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #e0e1dd;
+  background: linear-gradient(180deg, #0d1b2a 0%, #1b263b 32%, #415a77 100%);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(110, 153, 189, 0.22), transparent 30%),
+    radial-gradient(circle at 80% 15%, rgba(119, 141, 169, 0.13), transparent 28%),
+    linear-gradient(180deg, #0a1826 0%, #122b3d 24%, #1f3b52 48%, #2d4968 100%);
+  background-size: 160% 160%;
+  animation: ambientPulse 16s ease-in-out infinite alternate;
+}
+
+@keyframes ambientPulse {
+  0% {
+    background-position: 50% 0%, 50% 0%, 50% 0%;
+    filter: saturate(1.02) brightness(0.98);
+  }
+  50% {
+    background-position: 52% 32%, 48% 30%, 52% 40%;
+    filter: saturate(1.12) brightness(1.04);
+  }
+  100% {
+    background-position: 46% 100%, 55% 90%, 48% 100%;
+    filter: saturate(1.06) brightness(1);
+  }
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
