@@ -1,0 +1,172 @@
+### 1. Comprobar estado
+GET http://localhost:3001/api/estado
+
+### 2. Consultar tarifas
+GET http://localhost:3001/api/tarifas
+
+### 3. Landing básica
+POST http://localhost:3001/api/presupuesto
+Content-Type: application/json
+
+{
+  "tipo": "landing",
+  "paginas": 1,
+  "formulario": false,
+  "segundoIdioma": false
+}
+
+### 4. Corporativa con formulario
+POST http://localhost:3001/api/presupuesto
+Content-Type: application/json
+
+{
+  "tipo": "corporativa",
+  "paginas": 4,
+  "formulario": true,
+  "segundoIdioma": false
+}
+
+### 5. Landing con ambos extras
+POST http://localhost:3001/api/presupuesto
+Content-Type: application/json
+
+{
+  "tipo": "landing",
+  "paginas": 2,
+  "formulario": true,
+  "segundoIdioma": true
+}
+
+### 6. Límite superior válido
+POST http://localhost:3001/api/presupuesto
+Content-Type: application/json
+
+{
+  "tipo": "landing",
+  "paginas": 20,
+  "formulario": false,
+  "segundoIdioma": false
+}
+
+### 7. Error: paginas 0
+POST http://localhost:3001/api/presupuesto
+Content-Type: application/json
+
+{
+  "tipo": "landing",
+  "paginas": 0,
+  "formulario": false,
+  "segundoIdioma": false
+}
+
+### 8. Error: paginas 21
+POST http://localhost:3001/api/presupuesto
+Content-Type: application/json
+
+{
+  "tipo": "landing",
+  "paginas": 21,
+  "formulario": false,
+  "segundoIdioma": false
+}
+
+### 9. Error: paginas decimales
+POST http://localhost:3001/api/presupuesto
+Content-Type: application/json
+
+{
+  "tipo": "landing",
+  "paginas": 2.5,
+  "formulario": false,
+  "segundoIdioma": false
+}
+
+### 10. Error: tipo no permitido
+POST http://localhost:3001/api/presupuesto
+Content-Type: application/json
+
+{
+  "tipo": "tienda",
+  "paginas": 3,
+  "formulario": false,
+  "segundoIdioma": false
+}
+
+### 11. Error: booleano como cadena
+POST http://localhost:3001/api/presupuesto
+Content-Type: application/json
+
+{
+  "tipo": "landing",
+  "paginas": 3,
+  "formulario": "false",
+  "segundoIdioma": false
+}
+
+### 12. El cliente no puede imponer el precio
+POST http://localhost:3001/api/presupuesto
+Content-Type: application/json
+
+{
+  "tipo": "corporativa",
+  "paginas": 4,
+  "formulario": true,
+  "segundoIdioma": false,
+  "total": 1,
+  "base": 1
+}
+
+### 13 Rechazar paginas como cadena
+POST http://localhost:3001/api/presupuesto
+Content-Type: application/json
+
+{
+  "tipo": "landing",
+  "paginas": "4",
+  "formulario": false,
+  "segundoIdioma": false
+}
+
+### 14 Rechazar como obligatorio ausente
+POST http://localhost:3001/api/presupuesto
+Content-Type: application/json
+
+{
+  "tipo": "landing",
+  "paginas": 1,
+  "formulario": false
+}
+
+### 15 Rechazar un array
+POST http://localhost:3001/api/presupuesto
+Content-Type: application/json
+
+[]
+
+### 16 Rechazar SegundoIdioma como cadena
+POST http://localhost:3001/api/presupuesto
+Content-Type: application/json
+
+{
+  "tipo": "landing",
+  "paginas": 1,
+  "formulario": false,
+  "segundoIdioma": "false"
+}
+
+### 17. Ignorar precios y total enviados por el cliente
+POST http://localhost:3001/api/presupuesto
+Content-Type: application/json
+
+{
+  "tipo": "corporativa",
+  "paginas": 4,
+  "formulario": true,
+  "segundoIdioma": false,
+  "total": 1,
+  "base": 1,
+  "tarifas": {
+    "corporativa": 1,
+    "paginaAdicional": 0
+  }
+}
